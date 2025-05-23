@@ -1,0 +1,18 @@
+- id: redeploy-webhook
+  execute-command: "/opt/configurator/deploy.sh"
+  command-working-directory: "/opt/repository"
+
+  trigger-rule:
+    and:
+      - match:
+          type: payload-hmac-sha1
+          secret: '{{ getenv "WEBHOOK_SECRET" | js }}'
+          parameter:
+            source: header
+            name: X-Hub-Signature
+      - match:
+          type: value
+          value: refs/heads/master
+          parameter:
+            source: payload
+            name: ref

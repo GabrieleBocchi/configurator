@@ -1,0 +1,11 @@
+services:
+  configurator:
+    image: ghcr.io/gabrielebocchi/configurator:latest
+    container_name: configurator
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "${WEBHOOK_PORT:-9000}:9000"
+    volumes:
+      - "${SSH_PUBLIC_KEY_PATH:-./ssh_id/id_rsa.pub}:/root/.ssh/id_rsa.pub:ro"
+      - "${SSH_PRIVATE_KEY_PATH:-./ssh_id/id_rsa}:/root/.ssh/id_rsa:ro"

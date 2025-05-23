@@ -1,0 +1,18 @@
+vm1:
+  hosts:
+    vm1.example.org:
+  vars:
+    ansible_user: root
+    vm_path: vm1
+    services:
+      - service1
+      - service2
+      - service3
+
+vm2:
+  hosts:
+    vm2.example.org:
+  vars:
+    ansible_user: ansible
+    vm_path: vm2
+    services: [service1]

@@ -1,0 +1,15 @@
+# docker
+.dockerignore
+compose.yaml
+Dockerfile
+
+# git
+.git/
+.github/
+.gitignore
+
+# misc
+examples/
+.env.example
+README.md
+renovate.json

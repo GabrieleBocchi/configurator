@@ -1,0 +1,15 @@
+- name: Copy configuration of {{ item }}
+  ansible.builtin.copy:
+    src: "{{ repo_path }}/{{ vm_path }}/{{ item }}/"
+    dest: "/opt/{{ item }}/"
+    mode: u=r,g=r,o=r
+
+- name: Pull images
+  community.docker.docker_compose_v2_pull:
+    project_src: "/opt/{{ item }}/"
+
+- name: "Start {{ item }}"
+  community.docker.docker_compose_v2:
+    project_src: "/opt/{{ item }}/"
+    state: present
+    remove_orphans: true

@@ -1,0 +1,15 @@
+- name: Deploy configuration
+  hosts: all
+  gather_facts: false
+  become: true
+
+  tasks:
+    - name: Configure services
+      ansible.builtin.include_tasks: deploy_service.yaml
+      loop: "{{ services }}"
+
+    - name: Prune images
+      community.docker.docker_prune:
+        images: true
+        images_filters:
+          dangling: false
