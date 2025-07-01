@@ -2,6 +2,8 @@
 
 set -e
 
+apk add --update --no-cache -t ansible
+
 ansible-galaxy collection install -U community.docker
 
 mkdir -p /root/.ssh

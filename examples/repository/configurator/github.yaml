@@ -1,5 +1,5 @@
 - id: redeploy-webhook
-  execute-command: "/opt/configurator/deploy.sh"
+  execute-command: "/opt/repository/configurator/deploy.sh"
   command-working-directory: "/opt/repository"
 
   trigger-rule:
