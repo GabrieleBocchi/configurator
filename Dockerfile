@@ -1,4 +1,4 @@
-FROM        almir/webhook:2.8.2 AS builder
+FROM        almir/webhook:2.8.3 AS builder
 
 FROM        golang:alpine
 COPY        --from=builder /usr/local/bin/webhook /usr/local/bin/webhook
